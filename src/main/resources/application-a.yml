@@ -1,0 +1,7 @@
+server:
+  port: 8081
+  context-path: /springboot
+
+person:
+  name: 小胖
+  age: 22
