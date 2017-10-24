@@ -17,4 +17,11 @@ public class helloController {
     public String say(){
         return personProperties.getName()+personProperties.getAge();
     }
+
+    @RequestMapping("/hello2")
+    public String helloHtml(){
+        //public String helloHtml(HashMap<String,Object> map){
+        //map.put("hello","hello");
+        return"/hello2";
+    }
 }

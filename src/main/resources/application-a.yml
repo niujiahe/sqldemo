@@ -2,6 +2,12 @@ server:
   port: 8081
   context-path: /springboot
 
+thymeleaf:
+  mode: HTML5
+  encoding: UTF-8
+  content-type: text/html
+  cache: false
+
 person:
   name: 小胖
-  age: 22
+  age: 23

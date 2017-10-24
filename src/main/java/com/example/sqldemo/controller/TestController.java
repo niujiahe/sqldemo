@@ -9,9 +9,8 @@ public class TestController {
 
     @RequestMapping("/test")
     public String say(){
-        DataTest a = new DataTest();
-        a.main();
-        return "a";
+        DataTest test = new DataTest();
+        return test.main();
     };
 
 }

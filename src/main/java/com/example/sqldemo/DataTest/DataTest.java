@@ -150,15 +150,30 @@ public class DataTest {
         return result;
     }
 
-    public static void main() {
+    //查询一个数据
+    public static String main() {
         //发送 GET 请求 查询一个用户数据
-        String s=sendGet("http://localhost:8081/springboot/person/1", null);
+        String s = sendGet("http://localhost:8081/springboot/person/1", null);
         System.out.println(s);
+        return s;
+    }
 
+    //添加一个数据
+    public static String Add(String param){
         //发送 POST 请求 添加一个用户数据
         //String sr=sendPost("http://localhost:8081/springboot/person/","name=user&age=22");
-        //System.out.println(sr);
+        String sr=sendPost("http://localhost:8081/springboot/person/",param);
+        System.out.println(sr);
+        return sr;
     }
+
+    //删除一个数据
+    public static String dele(String param){
+        String sr=sendPost("http://localhost:8081/springboot/person/",param);
+        System.out.println(sr);
+        return sr;
+    }
+
 
     public static void main2() {
         int size = keywordMap.size();
