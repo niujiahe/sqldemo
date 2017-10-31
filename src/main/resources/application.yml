@@ -4,7 +4,7 @@ spring:
     active: a
   datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/db_person2
+      url: jdbc:mysql://127.0.0.1:3306/db_order
       username: root
       password: 123456
 

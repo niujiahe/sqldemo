@@ -1,6 +1,5 @@
 server:
-  port: 8081
-  context-path: /springboot
+  port: 8080
 
 thymeleaf:
   mode: HTML5

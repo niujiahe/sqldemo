@@ -13,12 +13,12 @@
 <script language="JavaScript">
     $(document).ready(function() {
         //alert(test());
-        //var data1 = getdataJSON(document.getElementById("inputdata").value);
+        var dataX = getXJSON(document.getElementById("inputdata").value);
+        var data1 = getdataJSON(document.getElementById("inputdata").value);
         //alert(data1);
         //alert(getdataList("[['2017-04-09',400],['2017-04-10',700],['2017-04-11',800],['2017-04-12',800]]"));
-        var dataX = getdataX(document.getElementById("inputdata").value);
-        var dataY1 = getdataY1(document.getElementById("inputdata").value);
-        var dataY2 = getdataY2(document.getElementById("inputdata").value);
+        //var dataX = getdataX(document.getElementById("inputdata").value);
+        //var dataY = getdataY(document.getElementById("inputdata").value);
 
         var title = {
             text: '订单价格'
@@ -42,7 +42,7 @@
         };
 
         var tooltip = {
-            valueSuffix: ''
+            valueSuffix: '\xB0C'
         }
 
         var legend = {
@@ -55,12 +55,8 @@
         var series =  [
             {
                 name: 'Total price',
-                data: dataY1
-            },
-            {
-                name: 'Order count',
-                data: dataY2
-            },
+                data: data1
+            }
         ];
 
         var json = {};
