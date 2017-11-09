@@ -151,10 +151,10 @@ public class DataTest {
     }
 
     /**
-      * @Author 牛家禾
-      * @Date 2017/10/31 10:14
-      * @Description 获得所有的订单数据
-      */
+     * @Author 牛家禾
+     * @Date 2017/10/31 10:14
+     * @Description 获得所有的订单数据
+     */
     public static String findAll(){
         String s = sendGet("http://localhost:8080//order", null);
         System.out.println(s);
@@ -162,10 +162,10 @@ public class DataTest {
     }
 
     /**
-      * @Author 牛家禾
-      * @Date 2017/10/31 10:14
-      * @Description 根据id查询订单数据
-      */
+     * @Author 牛家禾
+     * @Date 2017/10/31 10:14
+     * @Description 根据id查询订单数据
+     */
     public static String findOne(int id) {
         //发送 GET 请求 查询一个用户数据
         String s = sendGet("http://localhost:8080/order/"+id, null);
@@ -185,10 +185,10 @@ public class DataTest {
     }
 
     /**
-      * @Author 牛家禾
-      * @Date 2017/10/31 10:15
-      * @Description 添加一个订单数据
-      */
+     * @Author 牛家禾
+     * @Date 2017/10/31 10:15
+     * @Description 添加一个订单数据
+     */
     public static String add(String param){
         //发送 POST 请求 添加一个用户数据
         //String sr=sendPost("http://localhost:8081/springboot/person/","name=user&age=22");
@@ -198,10 +198,10 @@ public class DataTest {
     }
 
     /**
-      * @Author 牛家禾
-      * @Date 2017/10/31 10:16
-      * @Description 删除一个订单数据
-      */
+     * @Author 牛家禾
+     * @Date 2017/10/31 10:16
+     * @Description 删除一个订单数据
+     */
     public static String dele(String param){
         String sr=sendPost("http://localhost:8080/person/",param);
         System.out.println(sr);
@@ -211,10 +211,10 @@ public class DataTest {
 
 
     /**
-      * @Author 牛家禾
-      * @Date 2017/10/31 10:18
-      * @Description 并行多线程模拟数据发送
-      */
+     * @Author 牛家禾
+     * @Date 2017/10/31 10:18
+     * @Description 并行多线程模拟数据发送
+     */
     public static void orderssim() {
         int size = keywordMap.size();
         // TODO Auto-generated method stub
@@ -270,14 +270,14 @@ public class DataTest {
         exec.shutdown();
     }
     /**private static String getRandomSearchKey(final int no) {
-        String ret = "";
-        int size = keywordMap.size();
-        // int wanna = (int) (Math.random()) * (size - 1);
-        ret = (keywordMap.entrySet().toArray())[no].toString();
-        ret = ret.substring(0, ret.lastIndexOf("="));
-        System.out.println("\t" + ret);
-        return ret;
-    }*/
+     String ret = "";
+     int size = keywordMap.size();
+     // int wanna = (int) (Math.random()) * (size - 1);
+     ret = (keywordMap.entrySet().toArray())[no].toString();
+     ret = ret.substring(0, ret.lastIndexOf("="));
+     System.out.println("\t" + ret);
+     return ret;
+     }*/
     private static String getRandomSearchKey2(final int no) {
         String ret = "TEST";
         return ret;
