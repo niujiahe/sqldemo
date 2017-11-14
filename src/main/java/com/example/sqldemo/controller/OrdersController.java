@@ -89,8 +89,12 @@ public class OrdersController {
         String yearmonstr = String.valueOf(yearmon);
         int year= Integer.parseInt(yearmonstr.substring(0,4));
         int mon=Integer.parseInt(yearmonstr.substring(4,6));
+        //String year = yearmonstr.substring(0,4);
+        //String mon = yearmonstr.substring(4,6);
 
-        return ordersRepository.getSort(year,mon);
+
+        //return ordersRepository.getSort(year,mon);
+        return ordersRepository.getSort(2017,04);
     }
 
     /**

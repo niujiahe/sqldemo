@@ -18,6 +18,9 @@ public class Orders {
     private Integer id;
     private String order_id;
     private String order_sn;
+    private String order_user;
+    private String order_business;
+
     private Integer total_price;
     private Timestamp order_time;
 
@@ -63,4 +66,21 @@ public class Orders {
     public void setOrder_time(Timestamp order_time) {
         this.order_time = order_time;
     }
+
+    public String getOrder_user() {
+        return order_user;
+    }
+
+    public void setOrder_user(String order_user) {
+        this.order_user = order_user;
+    }
+
+    public String getOrder_business() {
+        return order_business;
+    }
+
+    public void setOrder_business(String order_business) {
+        this.order_business = order_business;
+    }
+
 }
