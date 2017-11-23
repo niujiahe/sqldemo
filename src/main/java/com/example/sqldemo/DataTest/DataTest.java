@@ -1,5 +1,15 @@
 package com.example.sqldemo.DataTest;
 
+import com.example.sqldemo.Service.OrdersService;
+import com.example.sqldemo.entity.Orders;
+import com.example.sqldemo.mapper.OrdersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -13,9 +23,7 @@ import java.io.InputStreamReader;
 import java.net.URLConnection;
 import java.util.List;
 import java.io.IOException;
-
-
-
+@Repository
 public class DataTest {
     private static int thread_num = 1;
     private static int client_num = 1;
@@ -150,22 +158,12 @@ public class DataTest {
         return result;
     }
 
-    /**
-     * @Author 牛家禾
-     * @Date 2017/10/31 10:14
-     * @Description 获得所有的订单数据
-     */
     public static String findAll(){
         String s = sendGet("http://localhost:8080//order", null);
         System.out.println(s);
         return s;
     }
 
-    /**
-     * @Author 牛家禾
-     * @Date 2017/10/31 10:14
-     * @Description 根据id查询订单数据
-     */
     public static String findOne(int id) {
         //发送 GET 请求 查询一个用户数据
         String s = sendGet("http://localhost:8080/order/"+id, null);
@@ -173,22 +171,12 @@ public class DataTest {
         return s;
     }
 
-    /**
-     * @Author 牛家禾
-     * @Date 2017/10/31 10:28
-     * @Description 根据日期进行区分查询
-     */
     public static String getandSort(int yearday){
         String s = sendGet("http://localhost:8080/getsort/"+yearday, null);
         System.out.println(s);
         return s;
     }
 
-    /**
-     * @Author 牛家禾
-     * @Date 2017/10/31 10:15
-     * @Description 添加一个订单数据
-     */
     public static String add(String param){
         //发送 POST 请求 添加一个用户数据
         //String sr=sendPost("http://localhost:8081/springboot/person/","name=user&age=22");
@@ -197,24 +185,20 @@ public class DataTest {
         return sr;
     }
 
-    /**
-     * @Author 牛家禾
-     * @Date 2017/10/31 10:16
-     * @Description 删除一个订单数据
-     */
     public static String dele(String param){
         String sr=sendPost("http://localhost:8080/person/",param);
         System.out.println(sr);
         return sr;
     }
 
+    //对于规则表的操作
+    public static String ruleAdd(String param)
+    {
+        String sr=sendPost("http://localhost:8080/addrule/",param);
+        System.out.println(sr);
+        return sr;
+    }
 
-
-    /**
-     * @Author 牛家禾
-     * @Date 2017/10/31 10:18
-     * @Description 并行多线程模拟数据发送
-     */
     public static void orderssim() {
         int size = keywordMap.size();
         // TODO Auto-generated method stub
@@ -279,7 +263,7 @@ public class DataTest {
      return ret;
      }*/
     private static String getRandomSearchKey2(final int no) {
-        String ret = "TEST";
+        String ret = "T";
         return ret;
     }
 }

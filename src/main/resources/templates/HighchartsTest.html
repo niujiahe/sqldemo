@@ -12,13 +12,18 @@
 <body>
 <script language="JavaScript">
     $(document).ready(function() {
-        //alert(test());
-        //var data1 = getdataJSON(document.getElementById("inputdata").value);
-        //alert(data1);
-        //alert(getdataList("[['2017-04-09',400],['2017-04-10',700],['2017-04-11',800],['2017-04-12',800]]"));
-        var dataX = getdataX(document.getElementById("inputdata").value);
-        var dataY1 = getdataY1(document.getElementById("inputdata").value);
-        var dataY2 = getdataY2(document.getElementById("inputdata").value);
+        //var dataX = getdataX(document.getElementById("inputdata").value);
+        //var dataY1 = getdataY1(document.getElementById("inputdata").value);
+        //var dataY2 = getdataY2(document.getElementById("inputdata").value);
+
+        alert("OK");
+        var dataX = getsummaryX(document.getElementById("inputdata").value);
+        var dataY1 = getsummaryY1(document.getElementById("inputdata").value);
+        var dataY2 = getsummaryY2(document.getElementById("inputdata").value);
+
+        alert(dataX);
+        alert(dataY1);
+        alert(dataY2);
 
         var title = {
             text: '订单价格'

@@ -1,13 +1,12 @@
 package com.example.sqldemo;
 
-import com.example.sqldemo.dao.OrdersRepository;
-import com.example.sqldemo.dao.OrdersRepositoryImpl;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication
+@MapperScan("com.example.sqldemo.mapper")
 public class SqldemoApplication {
 
 	public static void main(String[] args) {

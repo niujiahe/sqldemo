@@ -13,12 +13,11 @@
 <script language="JavaScript">
     $(document).ready(function() {
         //alert(test());
-        var dataX = getXJSON(document.getElementById("inputdata").value);
-        var data1 = getdataJSON(document.getElementById("inputdata").value);
-        //alert(data1);
-        //alert(getdataList("[['2017-04-09',400],['2017-04-10',700],['2017-04-11',800],['2017-04-12',800]]"));
-        //var dataX = getdataX(document.getElementById("inputdata").value);
-        //var dataY = getdataY(document.getElementById("inputdata").value);
+        var dataX = getallOrdersX(document.getElementById("inputdata").value);
+        var dataY = getallOrdersY(document.getElementById("inputdata").value);
+
+        alert(dataX);
+        alert(dataY);
 
         var title = {
             text: '订单价格'
@@ -55,7 +54,7 @@
         var series =  [
             {
                 name: 'Total price',
-                data: data1
+                data: dataY
             }
         ];
 

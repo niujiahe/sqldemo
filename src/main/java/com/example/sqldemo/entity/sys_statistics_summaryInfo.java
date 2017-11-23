@@ -15,25 +15,24 @@ public class sys_statistics_summaryInfo {
     @GeneratedValue
 
     private Integer id;
-    private Integer infoId;
     //规则ID
-    private Integer ruleId;
+    private Integer rule_id;
+
     //维度
-    private StatisticsTimeType timeType;
-    private Timestamp statisticsTimeBegin;
-    private Timestamp statisticsTimeEnd;
-    private String statisticsUserValue;
-    private String statisticsUBusinessValue;
+    private String time_type;
+    private String time_value;
+    private Timestamp statistics_time_begin;
+    private Timestamp statistics_time_end;
+    private String statistics_user_value;
+    private String statistics_business_value;
     //统计项
-    private long itemOrderCount;
-    private long itemOrderAmount;
+    private long item_order_count;
+    private long item_order_amount;
     //扩展信息
-    private String extraContent;
+    private String extra_content;
     //公共信息
-    private Timestamp createTime;
-    private Timestamp recordStatus;
-
-
+    private Timestamp create_time;
+    private String record_status;
 
     public Integer getId() {
         return id;
@@ -42,100 +41,102 @@ public class sys_statistics_summaryInfo {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Integer getInfoId() {
-        return infoId;
+
+    public Integer getRule_id() {
+        return rule_id;
     }
 
-    public void setInfoId(Integer infoId) {
-        this.infoId = infoId;
+    public void setRule_id(Integer rule_id) {
+        this.rule_id = rule_id;
     }
 
-    public Integer getRuleId() {
-        return ruleId;
+    public String getTime_type() {
+        return time_type;
     }
 
-    public void setRuleId(Integer ruleId) {
-        this.ruleId = ruleId;
+    public void setTime_type(String time_type) {
+        this.time_type = time_type;
     }
 
-    public StatisticsTimeType getTimeType() {
-        return timeType;
+    public String getTime_value() {
+        return time_value;
     }
 
-    public void setTimeType(StatisticsTimeType timeType) {
-        this.timeType = timeType;
+    public void setTime_value(String time_value) {
+        this.time_value = time_value;
     }
 
-    public Timestamp getStatisticsTimeBegin() {
-        return statisticsTimeBegin;
+    public Timestamp getStatistics_time_begin() {
+        return statistics_time_begin;
     }
 
-    public void setStatisticsTimeBegin(Timestamp statisticsTimeBegin) {
-        this.statisticsTimeBegin = statisticsTimeBegin;
+    public void setStatistics_time_begin(Timestamp statistics_time_begin) {
+        this.statistics_time_begin = statistics_time_begin;
     }
 
-    public Timestamp getStatisticsTimeEnd() {
-        return statisticsTimeEnd;
+    public Timestamp getStatistics_time_end() {
+        return statistics_time_end;
     }
 
-    public void setStatisticsTimeEnd(Timestamp statisticsTimeEnd) {
-        this.statisticsTimeEnd = statisticsTimeEnd;
+    public void setStatistics_time_end(Timestamp statistics_time_end) {
+        this.statistics_time_end = statistics_time_end;
     }
 
-    public String getStatisticsUserValue() {
-        return statisticsUserValue;
+    public String getStatistics_user_value() {
+        return statistics_user_value;
     }
 
-    public void setStatisticsUserValue(String statisticsUserValue) {
-        this.statisticsUserValue = statisticsUserValue;
+    public void setStatistics_user_value(String statistics_user_value) {
+        this.statistics_user_value = statistics_user_value;
     }
 
-    public String getStatisticsUBusinessValue() {
-        return statisticsUBusinessValue;
+    public String getStatistics_business_value() {
+        return statistics_business_value;
     }
 
-    public void setStatisticsUBusinessValue(String statisticsUBusinessValue) {
-        this.statisticsUBusinessValue = statisticsUBusinessValue;
+    public void setStatistics_business_value(String statistics_business_value) {
+        this.statistics_business_value = statistics_business_value;
     }
 
-    public long getItemOrderCount() {
-        return itemOrderCount;
+    public long getItem_order_count() {
+        return item_order_count;
     }
 
-    public void setItemOrderCount(long itemOrderCount) {
-        this.itemOrderCount = itemOrderCount;
+    public void setItem_order_count(long item_order_count) {
+        this.item_order_count = item_order_count;
     }
 
-    public long getItemOrderAmount() {
-        return itemOrderAmount;
+    public long getItem_order_amount() {
+        return item_order_amount;
     }
 
-    public void setItemOrderAmount(long itemOrderAmount) {
-        this.itemOrderAmount = itemOrderAmount;
+    public void setItem_order_amount(long item_order_amount) {
+        this.item_order_amount = item_order_amount;
     }
 
-    public String getExtraContent() {
-        return extraContent;
+    public String getExtra_content() {
+        return extra_content;
     }
 
-    public void setExtraContent(String extraContent) {
-        this.extraContent = extraContent;
+    public void setExtra_content(String extra_content) {
+        this.extra_content = extra_content;
     }
 
-    public Timestamp getCreateTime() {
-        return createTime;
+    public Timestamp getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Timestamp create_time) {
+        this.create_time = create_time;
     }
 
-    public Timestamp getRecordStatus() {
-        return recordStatus;
+    public String getRecord_status() {
+        return record_status;
     }
 
-    public void setRecordStatus(Timestamp recordStatus) {
-        this.recordStatus = recordStatus;
+    public void setRecord_status(String record_status) {
+        this.record_status = record_status;
     }
+
 
 }

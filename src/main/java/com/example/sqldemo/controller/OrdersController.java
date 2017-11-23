@@ -1,9 +1,9 @@
 package com.example.sqldemo.controller;
 
 import com.example.sqldemo.Service.OrdersService;
-import com.example.sqldemo.dao.OrdersRepository;
+import com.example.sqldemo.entity.sys_statistics_ruleInfo;
+import com.example.sqldemo.mapper.OrdersRepository;
 import com.example.sqldemo.entity.Orders;
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,7 +40,8 @@ public class OrdersController {
         orders.setTotal_price(total_price);
         orders.setOrder_time(order_time);
 
-        return ordersRepository.save(orders);
+        ordersRepository.save(orders);
+        return orders;
     }
 
     @GetMapping(value = "/order/{id}")
@@ -75,8 +76,9 @@ public class OrdersController {
         orders.setOrder_sn(order_sn);
         orders.setTotal_price(total_price);
         orders.setOrder_time(order_time);
+        ordersRepository.save(orders);
 
-        return ordersRepository.save(orders);
+        return orders;
     }
 
     /**
@@ -96,24 +98,25 @@ public class OrdersController {
         //return ordersRepository.getSort(year,mon);
         return ordersRepository.getSort(2017,04);
     }
-
     /**
-     * @Author 牛家禾
-     * @Date 2017/10/31 10:05
-     * @Description 通过账单进行查询
-     */
-    /*@GetMapping(value = "/order/total_price/{total_price}")
-    public List<Orders> ordersListByPrice(@PathVariable("total_price") Integer total_price) {
-        return ordersRepository.findByTotal_price(total_price);
-    }*/
+      * @Author 牛家禾
+      * @Date 2017/11/16 09:32
+      * @Description 根据自定义规则表进行查询
+      */
+    @GetMapping(value = "/getMaxid")
+    public Integer getMaxid(){
+        return ordersRepository.getMaxid();
+    }
+
 
     /**
      * @Author 牛家禾
      * @Date 2017/10/31 10:05
      * @Description 事务测试
      */
-    @PostMapping("/order/two")
-    public void orderTwo(){
-        ordersService.insertTwo();
+    //@PostMapping("/order/two")
+    @GetMapping("/order/two")
+    public List<Orders> orderTwo(){
+        return ordersService.judgeAllRule(1);
     }
 }
