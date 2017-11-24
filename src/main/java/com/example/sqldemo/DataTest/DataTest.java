@@ -1,53 +1,18 @@
 package com.example.sqldemo.DataTest;
-
-import com.example.sqldemo.Service.OrdersService;
-import com.example.sqldemo.entity.Orders;
-import com.example.sqldemo.mapper.OrdersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.io.PrintWriter;
-import java.net.HttpURLConnection;
+import java.io.*;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.net.URLConnection;
 import java.util.List;
-import java.io.IOException;
+
 @Repository
 public class DataTest {
-    private static int thread_num = 1;
-    private static int client_num = 1;
-    private static Map keywordMap = new HashMap();
-    static {
-        try {
-            //InputStreamReader isr = new InputStreamReader(new FileInputStream(
-            //        new File("clicks.txt")), "GBK");
-            //BufferedReader buffer = new BufferedReader(isr);
-            //String line = "";
-            //while ((line = buffer.readLine()) != null) {
-            //    keywordMap.put(line.substring(0, line.lastIndexOf(":")), "");
-            //}
-            for (int i=0;i<230;i++){
-                keywordMap.put(1,2);
-
-                keywordMap.put(3,4);
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * 向指定URL发送GET方法的请求
@@ -192,15 +157,22 @@ public class DataTest {
     }
 
     //对于规则表的操作
-    public static String ruleAdd(String param)
-    {
+    public static String ruleAdd(String param) {
         String sr=sendPost("http://localhost:8080/addrule/",param);
         System.out.println(sr);
         return sr;
     }
 
-    public static void orderssim() {
-        int size = keywordMap.size();
+    /**
+      * @Author 牛家禾
+      * @Date 2017/11/23 14:38
+      * @Description 并行输入数据的模拟
+      */
+
+    private static int thread_num = 10;
+    private static int client_num = 100;
+
+    public static void OrderSim() {
         // TODO Auto-generated method stub
         ExecutorService exec = Executors.newCachedThreadPool();
         // 50个线程可以同时访问
@@ -214,32 +186,13 @@ public class DataTest {
                         // 获取许可
                         semp.acquire();
                         System.out.println("Thread:" + NO);
-                        String host = "http://localhost:8081/springboot/person";
-                        String para = "？name='TestUser'";
+                        String host = "http://localhost:8080/order/";
+                        String para = getRandomOrder();
+                        String sr=sendPost("http://localhost:8080/order/",para);
                         System.out.println(host + para);
-                        URL url = new URL(host+para);// 此处填写供测试的url
-                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                        // connection.setRequestMethod("POST");
-                        // connection.setRequestProperty("Proxy-Connection",
-                        // "Keep-Alive");
-                        connection.setDoOutput(true);
-                        connection.setDoInput(true);
 
-                        PrintWriter out = new PrintWriter(connection.getOutputStream());
-                        out.print(para);
-                        out.flush();
-                        out.close();
-                        System.out.println("output");
-                        /*BufferedReader in = new BufferedReader(
-                                new InputStreamReader(connection
-                                        .getInputStream()));
-                        String line = "";
-                        String result = "";
-                        while ((line = in.readLine()) != null) {
-                            result += line;
-                        }*/
-                        // System.out.println(result);
-                        // Thread.sleep((long) (Math.random()) * 1000);
+
+
                         // 释放
                         System.out.println("第：" + NO + " 个");
                         semp.release();
@@ -253,17 +206,16 @@ public class DataTest {
         // 退出线程池
         exec.shutdown();
     }
-    /**private static String getRandomSearchKey(final int no) {
-     String ret = "";
-     int size = keywordMap.size();
-     // int wanna = (int) (Math.random()) * (size - 1);
-     ret = (keywordMap.entrySet().toArray())[no].toString();
-     ret = ret.substring(0, ret.lastIndexOf("="));
-     System.out.println("\t" + ret);
-     return ret;
-     }*/
-    private static String getRandomSearchKey2(final int no) {
-        String ret = "T";
-        return ret;
+    private static String getRandomOrder() {
+        Random ra =new Random();
+
+        String test_price  = ra.nextInt(5)*100+"";
+        String test_time   = "2017-04-"+ra.nextInt(30)+" "+ra.nextInt(24)+":00:00";
+
+        String orders = "order_id=999&order_sn=test&total_price="+test_price+"&order_time="+test_time;
+
+        return orders;
     }
+
+
 }

@@ -21,6 +21,7 @@ public class TestController {
     public String say(){
         Integer a = 0;
         DataTest test = new DataTest();
+        //test.OrderSim();
         //删除一个数据
         //test.dele("17");
         //添加一个数据
@@ -29,19 +30,12 @@ public class TestController {
         //test.add(orders);
 
         String statistics_time_type = StatisticsTimeType.DAY.toString();
-        String ruleadd = "create_by=NJH&create_time=2017-04-09 13:20:10&statistics_time_value=2017-04-09 13:20:10;2017-04-12 13:20:14&rule_id=1&statistics_time_type="+statistics_time_type;
+        String ruleadd = "create_by=NJH&create_time=2017-04-09 13:20:10&statistics_time_value=2017-04-09 00:00:00;2017-04-12 23:59:59&rule_id=2&statistics_time_type="+statistics_time_type;
         //test.ruleAdd(ruleadd);
+        //Timestamp time1 = Timestamp.valueOf("2017-04-7 19:00:00");
 
 
-        //a=test.getMaxid();
 
-        //test.myrule();
-        //查询全部数据
-        //String a = test.findAll();
-        //查询所有数据
-        //String a = test.findOne(1);
-        //按天数查询数据
-        //String a = test.getandSort(201704);
         return ruleadd;
     }
 }

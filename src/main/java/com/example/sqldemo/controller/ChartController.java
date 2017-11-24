@@ -4,6 +4,7 @@ import com.example.sqldemo.Service.OrdersService;
 import com.example.sqldemo.entity.Orders;
 import com.example.sqldemo.entity.sys_statistics_summaryInfo;
 import com.example.sqldemo.mapper.OrdersRepository;
+import com.example.sqldemo.mapper.RuleRepository;
 import com.example.sqldemo.mapper.SummaryRepository;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class ChartController {
     OrdersService ordersService;
     @Autowired
     SummaryRepository summaryRepository;
+    @Autowired
+    RuleRepository ruleRepository;
 
     /**
       * @Author 牛家禾
@@ -33,6 +36,12 @@ public class ChartController {
         List<sys_statistics_summaryInfo> dataget = summaryRepository.findAll();
         String dataget1 = JSONArray.fromObject(dataget).toString();
         model.addAttribute("dataget",dataget1);
+
+        List<Integer> AllRuleid = ruleRepository.getAllRuleid();
+        JSONArray json1 = JSONArray.fromObject(AllRuleid);
+        String ruleAll = json1.toString();
+        model.addAttribute("ruleAll",ruleAll);
+
         return "HighchartsTest";
     }
     /**
@@ -45,8 +54,8 @@ public class ChartController {
         List<Orders> dataget = ordersRepository.findAll();
         JSONArray json = JSONArray.fromObject(dataget);
         String datagetall = json.toString();
-        model2.addAttribute("dataget",datagetall);
 
+        model2.addAttribute("dataget",datagetall);
         return "HighchartsAll";
     }
 }

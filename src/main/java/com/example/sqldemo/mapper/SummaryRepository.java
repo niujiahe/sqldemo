@@ -22,4 +22,5 @@ public interface SummaryRepository {
             "#{statistics_user_value},#{time_type},#{time_value})")
     void save(sys_statistics_summaryInfo summaryInfo);
 
+
 }

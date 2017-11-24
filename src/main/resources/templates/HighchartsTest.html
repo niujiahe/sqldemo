@@ -12,14 +12,14 @@
 <body>
 <script language="JavaScript">
     $(document).ready(function() {
-        //var dataX = getdataX(document.getElementById("inputdata").value);
-        //var dataY1 = getdataY1(document.getElementById("inputdata").value);
-        //var dataY2 = getdataY2(document.getElementById("inputdata").value);
 
         alert("OK");
-        var dataX = getsummaryX(document.getElementById("inputdata").value);
-        var dataY1 = getsummaryY1(document.getElementById("inputdata").value);
-        var dataY2 = getsummaryY2(document.getElementById("inputdata").value);
+        var data  = getsyummaryXY(document.getElementById("inputdata").value,document.getElementById("ruleAll").value);
+        alert(data);
+
+        var dataX  = data[0][0];
+        var dataY1 = data[0][1];
+        var dataY2 = data[1][1];
 
         alert(dataX);
         alert(dataY1);
@@ -59,12 +59,20 @@
 
         var series =  [
             {
-                name: 'Total price',
-                data: dataY1
+                name: 'Total price-rule1',
+                data: data[0][1]
             },
             {
-                name: 'Order count',
-                data: dataY2
+                name: 'Total price-rule2',
+                data: data[1][1]
+            },
+            {
+                name: 'Total count-rule1',
+                data: data[0][2]
+            },
+            {
+                name: 'Total count-rule1',
+                data: data[1][2]
             },
         ];
 
@@ -84,6 +92,7 @@
 <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
 <!--/*@thymesVar id="datajson" type="java.lang.String"*/-->
 <textarea id="inputdata" th:hidden="true" name="inputdata" th:inline="text">[[${dataget}]]</textarea>
+<textarea id="ruleAll" th:hidden="false" name="ruleAll" th:inline="text">[[${ruleAll}]]</textarea>
 </body>
 
 </html>

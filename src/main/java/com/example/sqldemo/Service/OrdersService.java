@@ -98,7 +98,7 @@ public class OrdersService {
         //步骤2：查询summary表中是否存在rule中获得的时间标签；如果存在则合并，如果不存在则增加新的记录
 
         if(SatisfyTimeValue){
-            summaryTimeValue = sdf.format(orderTime);
+            summaryTimeValue = sdf.format(orderTime)+ruleInfoTemp.getRule_id();
             sys_statistics_summaryInfo summaryInfo = new sys_statistics_summaryInfo();
             //设定summaryInfo公共部分的属性值
             summaryInfo.setRule_id(ruleInfoTemp.getRule_id());
@@ -183,7 +183,7 @@ public class OrdersService {
             sys_statistics_summaryInfo temp = (sys_statistics_summaryInfo) summaryMap.get(key);
             //sys_statistics_summaryInfo temp1 = new sys_statistics_summaryInfo();
             //temp1.setItem_order_count(1);
-            summaryRepository.save(temp);
+            //summaryRepository.save(temp);
 
         }
 

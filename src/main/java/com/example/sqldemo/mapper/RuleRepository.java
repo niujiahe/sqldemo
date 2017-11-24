@@ -29,5 +29,9 @@ public interface RuleRepository{
     @Select("select max(id) from sys_statistics_rule_info")
     Integer getMaxid();
 
+    //获得所有rule_id
+    @Select("select rule_id from sys_statistics_rule_info")
+    List<Integer> getAllRuleid();
+
 
 }
