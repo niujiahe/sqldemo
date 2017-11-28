@@ -1,8 +1,10 @@
 package com.example.sqldemo.DataTest;
+import com.example.sqldemo.entity.Orders;
 import org.springframework.stereotype.Repository;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
@@ -173,11 +175,12 @@ public class DataTest {
     private static int client_num = 100;
 
     public static void OrderSim() {
+        List<String> ordersList = new ArrayList<>();
         // TODO Auto-generated method stub
         ExecutorService exec = Executors.newCachedThreadPool();
-        // 50个线程可以同时访问
+        // 10个线程可以同时访问
         final Semaphore semp = new Semaphore(thread_num);
-        // 模拟2000个客户端访问
+        // 模拟100个客户端访问
         for (int index = 0; index < client_num; index++) {
             final int NO = index;
             Runnable run = new Runnable() {
@@ -190,9 +193,6 @@ public class DataTest {
                         String para = getRandomOrder();
                         String sr=sendPost("http://localhost:8080/order/",para);
                         System.out.println(host + para);
-
-
-
                         // 释放
                         System.out.println("第：" + NO + " 个");
                         semp.release();
@@ -209,13 +209,14 @@ public class DataTest {
     private static String getRandomOrder() {
         Random ra =new Random();
 
-        String test_price  = ra.nextInt(5)*100+"";
-        String test_time   = "2017-04-"+ra.nextInt(30)+" "+ra.nextInt(24)+":00:00";
+        String test_price  = (ra.nextInt(5)+1)*100+"";
+        String test_time   = "2017-04-"+(ra.nextInt(29)+1)+" "+ra.nextInt(24)+":00:00";
 
         String orders = "order_id=999&order_sn=test&total_price="+test_price+"&order_time="+test_time;
 
         return orders;
     }
+
 
 
 }

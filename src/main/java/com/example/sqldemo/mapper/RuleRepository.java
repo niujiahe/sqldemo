@@ -33,5 +33,8 @@ public interface RuleRepository{
     @Select("select rule_id from sys_statistics_rule_info")
     List<Integer> getAllRuleid();
 
+    @Delete("TRUNCATE TABLE sys_statistics_rule_info")
+    void deleteall();
+
 
 }

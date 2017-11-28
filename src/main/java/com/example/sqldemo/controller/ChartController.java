@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -58,4 +59,24 @@ public class ChartController {
         model2.addAttribute("dataget",datagetall);
         return "HighchartsAll";
     }
+    /**
+      * @Author 牛家禾
+      * @Date 2017/11/28 10:35
+      * @Description 测试主界面
+      */
+    @RequestMapping(value = "/testui",method = RequestMethod.GET)
+    public String testui(){
+        return "testui";
+    }
+
+    /**
+      * @Author 牛家禾
+      * @Date 2017/11/28 15:19
+      * @Description 规则添加界面
+      */
+    @RequestMapping(value = "/newrule",method = RequestMethod.GET)
+    public String newrule(){
+        return "newrule";
+    }
+
 }

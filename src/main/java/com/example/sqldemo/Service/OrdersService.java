@@ -54,7 +54,7 @@ public class OrdersService {
     }
 
     //常量定义
-    static Integer count = 3;//每组数据的数目
+    static Integer count = 10;//每组数据的数目
     List<sys_statistics_ruleInfo> ruleInfo;//全部的规则
     HashMap summaryMap = new HashMap();//查询结果缓存Map
 
@@ -130,12 +130,6 @@ public class OrdersService {
 
         return true;
     }
-    /**
-      * @Description 将统计结果合并到结果数据表中
-      */
-    public boolean mergeAnswer(){
-        return true;
-    }
 
     /**
       * @Description 循环读取数据对规则进行判断
@@ -163,27 +157,20 @@ public class OrdersService {
             else {
                 for(int i=0;i<oneGroup.size();i++){
 
+                    answerList.add(oneGroup.get(i));
                     for(int j=0;j<ruleInfo.size();j++) {
                         //如果满足条件，则将其合并到结果数据表中
-                        if (judgeOneOrder(oneGroup.get(i), j)) {
-                            //
-                            //
-                            //
-                            //
-                            mergeAnswer();
-                            answerList.add(oneGroup.get(i));
-                        }
+                        judgeOneOrder(oneGroup.get(i), j);
                     }
                 }
 
             }
         }
 
+        summaryRepository.deleteall();
         for (Object key : summaryMap.keySet()) {
             sys_statistics_summaryInfo temp = (sys_statistics_summaryInfo) summaryMap.get(key);
-            //sys_statistics_summaryInfo temp1 = new sys_statistics_summaryInfo();
-            //temp1.setItem_order_count(1);
-            //summaryRepository.save(temp);
+            summaryRepository.save(temp);
 
         }
 

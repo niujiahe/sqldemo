@@ -23,4 +23,8 @@ public interface SummaryRepository {
     void save(sys_statistics_summaryInfo summaryInfo);
 
 
+    @Delete("TRUNCATE TABLE sys_statistics_summary_info")
+    void deleteall();
+
+
 }

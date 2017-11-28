@@ -108,15 +108,27 @@ public class OrdersController {
         return ordersRepository.getMaxid();
     }
 
+    /**
+      * @Author 牛家禾
+      * @Date 2017/11/28 11:50
+      * @Description 清空订单数据
+      */
+    @GetMapping(value = "/deleteallorders")
+    public String deleteall(){
+        ordersRepository.deleteall();
+        return "Delete all orders. DONE.";
+    }
+
 
     /**
      * @Author 牛家禾
      * @Date 2017/10/31 10:05
      * @Description 事务测试
      */
-    //@PostMapping("/order/two")
-    @GetMapping("/order/two")
+    @GetMapping("/ordersort")
     public List<Orders> orderTwo(){
         return ordersService.judgeAllRule(1);
     }
+
+
 }

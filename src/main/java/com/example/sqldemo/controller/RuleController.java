@@ -4,6 +4,7 @@ import com.example.sqldemo.entity.sys_statistics_ruleInfo;
 import com.example.sqldemo.entity.*;
 import com.example.sqldemo.mapper.RuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,20 +54,24 @@ public class RuleController {
         ruleRepository.save(ruleInfo);
         return ruleInfo;
     }*/
-    public sys_statistics_ruleInfo addrule(@RequestParam("create_by") String create_by,
-                                           @RequestParam("create_time") Timestamp create_time,
-                                           @RequestParam("statistics_time_type") String statistics_time_type,
+    public sys_statistics_ruleInfo addrule(@RequestParam("statistics_time_type") String statistics_time_type,
                                            @RequestParam("statistics_time_value")String statistics_time_value,
                                            @RequestParam("rule_id")Integer rule_id) {
 
         sys_statistics_ruleInfo ruleInfo= new sys_statistics_ruleInfo();
-        ruleInfo.setCreate_by(create_by);
-        ruleInfo.setCreate_time(create_time);
+        //ruleInfo.setCreate_by(create_by);
+        //ruleInfo.setCreate_time(create_time);
         ruleInfo.setStatistics_time_type(statistics_time_type);
         ruleInfo.setStatistics_time_value(statistics_time_value);
         ruleInfo.setRule_id(rule_id);
         ruleRepository.save(ruleInfo);
         return ruleInfo;
+    }
+
+    @GetMapping(value = "/deleteallrule")
+    public String deleteall(){
+        ruleRepository.deleteall();
+        return "Delete all rules. DONE.";
     }
 
 

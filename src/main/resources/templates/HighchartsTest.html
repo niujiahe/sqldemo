@@ -12,28 +12,64 @@
 <body>
 <script language="JavaScript">
     $(document).ready(function() {
+        $("#btntest").bind("click", function () {
+            var dataall  = getsyummaryXY(document.getElementById("inputdata").value,document.getElementById("ruleAll").value,document.getElementById("ruleselect").value);
 
-        alert("OK");
-        var data  = getsyummaryXY(document.getElementById("inputdata").value,document.getElementById("ruleAll").value);
-        alert(data);
+            var title = {
+                text: '订单价格'
+            };
 
-        var dataX  = data[0][0];
-        var dataY1 = data[0][1];
-        var dataY2 = data[1][1];
+            var subtitle = {
+                text: 'Test'
+            };
+            var xAxis = {
+                categories: dataall.dataX
+            };
+            var yAxis = {
+                title: {
+                    text: 'orders_price'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            };
 
-        alert(dataX);
-        alert(dataY1);
-        alert(dataY2);
+            var tooltip = {
+                valueSuffix: ''
+            }
+
+            var legend = {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            };
+
+
+
+            var json = {};
+
+            json.title = title;
+            json.subtitle = subtitle;
+            json.xAxis = xAxis;
+            json.yAxis = yAxis;
+            json.tooltip = tooltip;
+            json.legend = legend;
+            json.series = dataall.series;
+            $('#container').highcharts(json);
+        });
+        var dataall  = getsyummaryXY(document.getElementById("inputdata").value,document.getElementById("ruleAll").value,document.getElementById("ruleselect").value);
 
         var title = {
             text: '订单价格'
         };
-
         var subtitle = {
             text: 'Test'
         };
         var xAxis = {
-            categories: dataX
+            categories: dataall.dataX
         };
         var yAxis = {
             title: {
@@ -45,37 +81,15 @@
                 color: '#808080'
             }]
         };
-
         var tooltip = {
             valueSuffix: ''
         }
-
         var legend = {
             layout: 'vertical',
             align: 'right',
             verticalAlign: 'middle',
             borderWidth: 0
         };
-
-        var series =  [
-            {
-                name: 'Total price-rule1',
-                data: data[0][1]
-            },
-            {
-                name: 'Total price-rule2',
-                data: data[1][1]
-            },
-            {
-                name: 'Total count-rule1',
-                data: data[0][2]
-            },
-            {
-                name: 'Total count-rule1',
-                data: data[1][2]
-            },
-        ];
-
         var json = {};
 
         json.title = title;
@@ -84,15 +98,28 @@
         json.yAxis = yAxis;
         json.tooltip = tooltip;
         json.legend = legend;
-        json.series = series;
+        json.series = dataall.series;
         $('#container').highcharts(json);
+
     });
+
 </script>
 
-<div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+<br /><br /><br />
+<div align="center">
+    <p>RuleID:
+    <select id="ruleselect" name="ruleselect">
+    </select>
+    <button id="btntest" name="btntest">确认</button></p>
+
+</div>
+<br /><br /><br />
+<div id="container" style="width: 1000px; height: 400px; margin: 0 auto"></div>
 <!--/*@thymesVar id="datajson" type="java.lang.String"*/-->
 <textarea id="inputdata" th:hidden="true" name="inputdata" th:inline="text">[[${dataget}]]</textarea>
-<textarea id="ruleAll" th:hidden="false" name="ruleAll" th:inline="text">[[${ruleAll}]]</textarea>
+<textarea id="ruleAll" th:hidden="true" name="ruleAll" th:inline="text">[[${ruleAll}]]</textarea>
+
+
 </body>
 
 </html>

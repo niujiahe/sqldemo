@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>ADD A NEW RULE</title>
+</head>
+<body>
+<div align="center">
+    <form align="center" action="http://localhost:8080/addrule" method="post">
+        <br /><br /><br /><br /><br />
+        <p>Rule Id</p>
+        Rule Id: <input type="text" name="rule_id" />
+        <br /><br /><br /><br /><br />
+        <p>规则类型：DAY/HOUR/MINUTE</p>
+        Type Value: <input type="text" name="statistics_time_type" />
+        <br /><br /><br /><br /><br />
+        <p>数据库模拟插入的时间范围为2017-04-01～2017-4-30</p>
+        <p>起始终止时间，例：2017-04-09 00:00:00;2017-04-10 00:00:00</p>
+        Time Value: <input type="text" name="statistics_time_value" />
+        <br /><br /><br /><br /><br />
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+</body>
+</html>
